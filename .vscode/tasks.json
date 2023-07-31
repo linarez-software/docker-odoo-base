@@ -11,7 +11,7 @@
         {
             "label": "stop docker",
             "type": "shell",
-            "command": "docker rm -f $(docker ps -a -q --filter ancestor=docker.core-bpo.net/dev/odoo/digital_wellnez --format='{{.ID}}')",
+            "command": "docker rm -f $(docker ps -a  --filter ancestor=docker_odoo_data --format='{{.ID}}')",
         }
     ]
 }
