@@ -15,8 +15,11 @@ services:
     volumes:
       - odoo-web-data:/var/lib/odoo
       - ./extra-addons:/mnt/extra-addons
+      - ./third-party-addons:/mnt/third-party-addons
   db: 
     image: postgres:14.6
+    ports:
+      - '8832:5432'
     environment: 
       - POSTGRES_DB=postgres
       - POSTGRES_PASSWORD=odoo
