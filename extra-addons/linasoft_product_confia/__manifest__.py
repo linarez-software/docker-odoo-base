@@ -9,7 +9,7 @@
     "category": "Accounting Management",
     "website": "https://github.com/orgs/linarez-software",
     "author": "Pasv",
-    "depends": ["product","brand","product_brand","product_harmonized_system_stock"],
+    "depends": ["product","brand","product_brand","product_harmonized_system_stock","mrp"],
     "data": [
         "views/product_views.xml",
         "security/ir.model.access.csv",

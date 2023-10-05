@@ -7,40 +7,56 @@
             <field name="priority" eval="1"/>
             <field name="arch" type="xml">
                 <form>
-                    <group>
-                        <sheet name="sheet1_product_confia">
-                            <h6>Principal</h6>
-                            <hr/>
-                            <group>
-                                <field name="name" />
-                                <field name="description" />
-                            </group>
-                            <h6>Alterno</h6>
-                            <hr/>
-                            <group>
-                                <field name="hs_code_id"/>
-                                <field name="description" />
-                            </group>
-                        </sheet>
-
-                        <sheet name="sheet2_product_confia">
-                            <h6>Clasificación</h6>
-                            <hr/>
-                            <group>
-                                <field name="product_brand_id" />
-                            </group>
-                        </sheet>
-                        <notebook>
-                            <page>
-                                <field name="tree_view_price">
-                                    <tree>
-                                        <field name="name"/>
-                                        <field name="state"/>
-                                    </tree>
-                                </field>
-                            </page>
-                        </notebook>
-                    </group>
+                    <sheet class="confia-view">
+                        <div name="general_info" class="row">
+                            <div name="left_panel" class="col-12 col-md-6">
+                                <group string="Principal" name="main_id">
+                                    <field name="name" />
+                                    <field name="description" />
+                                </group>
+                                <group string="Alterno" name="alternative_id">
+                                    <field name="hs_code_id"/>
+                                    <field name="description" />
+                                </group>
+                            </div>
+                            <div name="right_panel" class="col-12 col-md-6">
+                                <group string="Clasificación" name="clasification">
+                                    <field name="product_brand_id" />
+                                    <field name="categ_id"/>
+                                    <field name="vendors_ids">
+                                        <tree>
+                                            <field name="name"/>
+                                        </tree>
+                                    </field>
+                                    <!-- TODO: add the fields left-->
+                                </group>
+                            </div>
+                        </div>
+                        <div name="details">
+                            <notebook>
+                                <page string="Principal" name="principal">
+                                    <div name="principal_row" class="row">
+                                        <group string="Precios" name="prices" class="col-12 col-md-4">
+                                            <field name="price_list_items_ids" nolabel="1" colspan="2"/>
+                                        </group>
+                                        <div class="col-md-1"/>
+                                        <div name="prices_data" class ="col-12 col-md-7">
+                                            <field name="stock_existences_rules_ids"/>
+                                        </div>
+                                    </div>
+                                    <group name="existences" string="Existencias">
+                                        <field name="stock_existences_ids" nolabel="1" colspan="2"/>
+                                    </group>
+                                </page>
+                                <page string="Lista" name="price_list">
+                                    <field name="seller_ids"/>
+                                </page>
+                                <page string="Componentes" name="components">
+                                    <field name="bom_components_ids"/>
+                                </page>
+                            </notebook>
+                        </div>
+                    </sheet>
                 </form>
             </field>
         </record>
